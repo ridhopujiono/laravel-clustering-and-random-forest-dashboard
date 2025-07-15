@@ -20,26 +20,26 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Route::is('clustering') ? 'active' : '' }} has-sub">
+                <li class="sidebar-item {{ Route::is('clustering') || Route::is('clustering.detail') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-diagram-3-fill"></i>
                         <span>Clustering</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu " style="display: {{ Route::is('clustering') || Route::is('clustering.detail') ? 'block' : 'none' }}">
                         <li class="submenu-item ">
                             <a href="{{ route('clustering') }}">Profil Risiko</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('clustering') }}">Cluster 0</a>
+                            <a href="{{ route('clustering.detail', ['cluster' => 0]) }}">Cluster 0</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('clustering') }}">Cluster 1</a>
+                            <a href="{{ route('clustering.detail', ['cluster' => 1]) }}">Cluster 1</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('clustering') }}">Cluster 2</a>
+                            <a href="{{ route('clustering.detail', ['cluster' => 2]) }}">Cluster 2</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('clustering') }}">Cluster 3</a>
+                            <a href="{{ route('clustering.detail', ['cluster' => 3]) }}">Cluster 3</a>
                         </li>
                     </ul>
                 </li>
