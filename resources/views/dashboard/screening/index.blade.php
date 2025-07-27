@@ -69,7 +69,7 @@
                             <!-- Tombol Submit -->
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">
-                                    <span id="button-text"><i class="bi bi-search me-2"></i>Cek Status Gizi</span>
+                                    <span id="button-text"><i class="bi bi-search me-2"></i>Cek Status Stunting</span>
                                     <span id="button-spinner" class="spinner-border spinner-border-sm" role="status"
                                         aria-hidden="true" style="display: none;"></span>
                                 </button>
@@ -91,10 +91,6 @@
                             <div class="col-md-4 mb-3 mb-md-0">
                                 <h6 class="text-muted">Prediksi Stunting</h6>
                                 <p id="prediksi-label" class="fs-4 fw-bold mb-0">-</p>
-                            </div>
-                            <div class="col-md-4 mb-3 mb-md-0">
-                                <h6 class="text-muted">Status Gizi (BB/TB)</h6>
-                                <p id="status-gizi-label" class="fs-4 fw-bold mb-0">-</p>
                             </div>
                             <div class="col-md-4">
                                 <h6 class="text-muted">Tingkat Keyakinan</h6>
@@ -127,28 +123,32 @@
 
             const clusterKnowledge = {
                 1: {
-                    name: "Sehat tapi Ramping 🟢",
+                    name: "Sehat tapi Ramping (Cluster 1) 🟢",
                     info: "Anak dalam kelompok ini memiliki tinggi badan yang baik untuk usianya (tidak stunting), namun berat badannya cenderung kurang untuk tinggi badannya (ramping/wasted).",
                     rekomendasi: "Fokus pada pemenuhan gizi seimbang, terutama asupan kalori dan protein, untuk mencapai berat badan ideal sesuai tinggi badannya. Pertumbuhan tinggi badan sudah baik, pertahankan!",
-                    headerClass: 'bg-success'
+                    headerClass: 'bg-success',
+                    cluster: 1
                 },
                 0: {
-                    name: "Stunting Parah & Gempal (Overweight) 🔴",
+                    name: "Stunting Parah & Gempal (Cluster 0) 🔴",
                     info: "Ini adalah profil paling kompleks. Anak mengalami stunting parah (sangat pendek) namun memiliki berat badan berlebih untuk tingginya yang pendek.",
                     rekomendasi: "Intervensi prioritas tinggi! Perlu konsultasi dengan ahli gizi. Fokus utama adalah mengejar pertumbuhan tinggi badan dengan nutrisi yang tepat, sambil mengontrol berat badan agar tidak menjadi obesitas. Hindari makanan tinggi gula dan lemak.",
-                    headerClass: 'bg-danger'
+                    headerClass: 'bg-danger',
+                    cluster: 0
                 },
                 2: {
-                    name: "Stunting Klasik & Kurus (Wasted) 🟡",
+                    name: "Stunting Klasik & Kurus (Cluster 2) 🟡",
                     info: "Ini adalah profil stunting yang paling umum, di mana anak memiliki tinggi badan pendek untuk usianya dan juga kurus untuk tinggi badannya.",
                     rekomendasi: "Perlu intervensi gizi yang menyeluruh untuk mengatasi kekurangan gizi akut (berat badan) dan kronis (tinggi badan) secara bersamaan. Pastikan asupan energi, protein, vitamin, dan mineral terpenuhi.",
-                    headerClass: 'bg-warning'
+                    headerClass: 'bg-warning',
+                    cluster: 2
                 },
                 3: {
-                    name: "Bayi Berisiko 🟠",
+                    name: "Bayi Berisiko (Cluster 3) 🟠",
                     info: "Kelompok usia termuda yang sudah menunjukkan tanda-tanda awal gagal tumbuh. Tinggi dan berat badannya berada di ambang batas bawah.",
                     rekomendasi: "Intervensi dini sangat krusial! Pastikan ASI eksklusif (jika di bawah 6 bulan) dan MPASI yang adekuat dan bergizi seimbang. Pemantauan pertumbuhan rutin setiap bulan adalah kunci untuk mencegah jatuh ke dalam kondisi stunting yang lebih parah.",
-                    headerClass: 'bg-orange'
+                    headerClass: 'bg-orange',
+                    cluster: 3
                 }
             };
 
@@ -202,7 +202,7 @@
 
                 // Mengisi data hasil
                 document.getElementById('prediksi-label').textContent = data.prediksi_label;
-                document.getElementById('status-gizi-label').textContent = data.status_gizi_label;
+                // document.getElementById('status-gizi-label').textContent = data.status_gizi_label;
                 document.getElementById('prediksi-proba').textContent = data.prediksi_proba ||
                 '-'; // Tambahkan fallback
 
