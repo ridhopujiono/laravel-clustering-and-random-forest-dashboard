@@ -15,6 +15,9 @@ Route::get('/dashboard', function () {
 Route::get('/clustering', function () {
     return view('dashboard.clustering.index');
 })->name('clustering');
+Route::get('/clustering/summary', function () {
+    return view('dashboard.clustering.summary');
+})->name('clustering.summary');
 Route::get('/clustering/detail', function () {
     return view('dashboard.clustering.detail');
 })->name('clustering.detail');
