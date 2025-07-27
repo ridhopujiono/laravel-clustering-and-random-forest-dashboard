@@ -20,12 +20,15 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Route::is('clustering') || Route::is('clustering.detail') ? 'active' : '' }} has-sub">
+                <li class="sidebar-item {{ Route::is('clustering*') || Route::is('clustering.detail') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-diagram-3-fill"></i>
                         <span>Clustering</span>
                     </a>
-                    <ul class="submenu " style="display: {{ Route::is('clustering') || Route::is('clustering.detail') ? 'block' : 'none' }}">
+                    <ul class="submenu " style="display: {{ Route::is('clustering*') || Route::is('clustering.detail') ? 'block' : 'none' }}">
+                        <li class="submenu-item ">
+                            <a href="{{ route('clustering.summary') }}">Ringkasan Analisis Cluster</a>
+                        </li>
                         <li class="submenu-item ">
                             <a href="{{ route('clustering') }}">Profil Risiko</a>
                         </li>
